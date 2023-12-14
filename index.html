@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  
+<body>
+
+  <div id="app">
+    <h1>{{ message }}</h1>
+  
+    <!-- Toggle button for show/hide details -->
+    <button @click="toggleDetails">{{ showDetails ? 'Hide Details' : 'Show Details' }}</button>
+  
+    <!-- Toggle button for editing -->
+    <button @click="toggleEdit">{{ edit ? 'Cancel Edit' : 'Edit Contacts' }}</button>
+  
+    <div v-if="showDetails">
+      <!-- Display contacts when showDetails is true -->
+      <div v-for="(contact, index) in contacts" :key="index">
+        <p>
+          {{ contact.name }} - 
+          <span v-if="!edit">{{ contact.email }}</span>
+          <input v-else v-model="contacts[index].email" type="text">
+          <span v-if="contact.age"> (Age: {{ contact.age }})</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
